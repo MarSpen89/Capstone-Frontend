@@ -1,0 +1,45 @@
+// home.scss
+
+$primaryColor: #f2f7ff;
+$transparent: transparent;
+
+.mainContainer {
+  background-color: #f2f7ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .titleContainer {
+    font-size: 24px;
+    color: #506f86;
+    margin-bottom: 20px;
+  }
+
+  .buttonContainer {
+    margin-top: 20px;
+
+    .inputButton {
+      background-color: #506f86;
+      color: #f2f7ff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
+
+  .emailContainer {
+    font-size: 18px;
+    color: #018790;
+    margin-top: 20px;
+  }
+}
