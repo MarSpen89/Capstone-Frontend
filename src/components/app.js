@@ -20,7 +20,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home/>} />
                 <Route path="/admin" element={<Admin/>} />
-                <Route path="/profile" elementt={<Profile/>} />
+                <Route path="/profile" element={<Profile/>} />
                 <Route path="/auth/login" element={<Login/>} />
                 {/* <Route path="/src/index" component={Index} /> */}
                 <Route path="/src/password" element={<Password/>} /> 

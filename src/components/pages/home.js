@@ -12,7 +12,9 @@ const Home = (props) => { // TODO: Describe how data is passed from one API to a
     const { loggedIn, email } = props;
     const navigate = useNavigate();
     
+
     const onButtonClick = () => {
+        navigate('/profile') 
         console.log("Button Clicked!")
     };
 

@@ -15,7 +15,7 @@ return (
         <h2>Admin Dashboard</h2>
         <div className="adminContent">
             <h3>Statistics</h3>
-            <p>Tota lUsers: {adminData.totalUsers}</p>
+            <p>Total Users: {adminData.totalUsers}</p>
             <p>New Requests: {adminData.newRequests}</p>
         </div>
         <div className="adminAction">
@@ -27,4 +27,4 @@ return (
 );
 };
 
-expport default Admin;
+export default Admin;
