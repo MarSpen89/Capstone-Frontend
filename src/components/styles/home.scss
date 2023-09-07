@@ -1,42 +1,53 @@
-// Home.scss
+// home.scss
+
+$primaryColor: #1262e2;
+$transparent: transparent;
 
 .mainContainer {
+  background-color: #f2f7ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  .titleContainer {
+    font-size: 24px;
+    color: #506f86;
+    margin-bottom: 20px;
+  }
+
+  .inputContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
 
-    .titleContainer {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
+    .inputField {
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .buttonContainer {
+    margin-top: 20px;
+
+    .inputButton {
+      background-color: #506f86;
+      color: #f2f7ff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
     }
+  }
 
-    .buttonContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-
-
-        .inputButton {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: #0056b3;
-            }
-        }
-
-        
-
-    }
+  .emailContainer {
+    font-size: 18px;
+    color: #018790;
+    margin-top: 20px;
+  }
 }
+};

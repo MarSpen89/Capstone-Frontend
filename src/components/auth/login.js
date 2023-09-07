@@ -1,24 +1,81 @@
-// I need to incorporate this into my home.js page
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import '../styles/login.css';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from "../../components/auth/login";
-import Home from "../pages/home";
-import { useEffect, useState } from 'react';
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorText, setErrorText] = useState('');
 
-function App() {
-    const [loggedIn, setLoggedIn] = useState(false) // Adding state to this functional component
-    const [email, setEmail] = useState("")
+  // Use the useNavigate hook to get the navigation function
+  const navigate = useNavigate();
 
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home email={email} loggedIn={setLoggedIn}/>} />
-                    <Route path="/login" element={<Login setLogIn={setLoggedIn} setEmail={setEmail} />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
-}
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+    setErrorText('');
+  };
 
-export default App;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios
+      .post(
+        'http://127.0.0.1:5000/user',
+        {
+          client: {
+            email: email,
+            password: password,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.data.status === 'created') {
+          // Use the navigate function to navigate to the home page
+          navigate('/dashboard');
+        } else {
+          setErrorText('Wrong email or password');
+        }
+      })
+      .catch((error) => {
+        setErrorText('An error occurred');
+      });
+  };
+
+  return (
+    <div className="login-container">
+      <h1>LOGIN TO ACCESS YOUR PROFILE</h1>
+
+      <div className="error-text">{errorText}</div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="input-field"
+          type='email'
+          name='email'
+          placeholder='Your email'
+          value={email}
+          onChange={handleChange}
+        />
+
+        <input
+          className="input-field"
+          type='password'
+          name='password'
+          placeholder='Your password'
+          value={password}
+          onChange={handleChange}
+        />
+
+        <button type='submit' className="login-button">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
