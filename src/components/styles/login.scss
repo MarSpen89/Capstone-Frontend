@@ -1,0 +1,38 @@
+// Define variables
+$primaryColor: #485e81;
+$transparent: transparent;
+
+
+// login.css
+
+.login-container {
+  background-color: grey;
+  padding: 20px;
+  border: 10px solid yellowgreen;
+  border-radius: 5px;
+  width: 400px;
+  margin: 20px auto;
+  text-align: center;
+
+  .error-text {
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .input-field {
+    background-color: $primaryColor;
+    color: yellowgreen;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+  }
+
+  .login-button {
+    padding: 10px 20px;
+    background-color: $primaryColor;
+    color: yellowgreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

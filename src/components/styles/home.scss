@@ -1,10 +1,20 @@
-// home.scss
-
+/* Define variables */
 $primaryColor: #1262e2;
 $transparent: transparent;
 
+/* Global styles */
+
+
+.root > .login-container {
+  background-color: $primaryColor;
+  color: $transparent;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid $primaryColor;
+}
+
 .mainContainer {
-  background-color: #f2f7ff;
+  background-color: #104fb4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +39,7 @@ $transparent: transparent;
       margin: 5px;
       border: 1px solid #ccc;
       border-radius: 5px;
+    }
   }
 
   .buttonContainer {
@@ -50,4 +61,3 @@ $transparent: transparent;
     margin-top: 20px;
   }
 }
-};
