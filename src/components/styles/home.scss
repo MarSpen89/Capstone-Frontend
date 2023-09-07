@@ -1,6 +1,6 @@
 // home.scss
 
-$primaryColor: #f2f7ff;
+$primaryColor: #1262e2;
 $transparent: transparent;
 
 .mainContainer {
@@ -11,17 +11,24 @@ $transparent: transparent;
   justify-content: center;
   min-height: 100vh;
 
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-
   .titleContainer {
     font-size: 24px;
     color: #506f86;
     margin-bottom: 20px;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .inputField {
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
   }
 
   .buttonContainer {
@@ -43,5 +50,4 @@ $transparent: transparent;
     margin-top: 20px;
   }
 }
-
-
+};
