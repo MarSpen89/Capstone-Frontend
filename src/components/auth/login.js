@@ -1,24 +1,61 @@
 // I need to incorporate this into my home.js page
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from "../../components/auth/login";
-import Home from "../pages/home";
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { auth } from './firebase'; // Import your initialized Firebase app
+import { useHistory } from 'react-router-dom'; // Change to useHistory
 
-function App() {
-    const [loggedIn, setLoggedIn] = useState(false) // Adding state to this functional component
-    const [email, setEmail] = useState("")
+// Create a context to hold the user authentication state
+const AuthContext = createContext();
 
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home email={email} loggedIn={setLoggedIn}/>} />
-                    <Route path="/login" element={<Login setLogIn={setLoggedIn} setEmail={setEmail} />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+// Custom hook to use the AuthContext
+export function useAuth() {
+    return useContext(AuthContext);
 }
 
-export default App;
+// AuthProvider component to wrap the entire application and provide authentication context
+export function AuthProvider({ children }) {
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line
+  const history = useHistory(); // Change to useHistory
+
+  // Function to sign up a new user
+    async function signup(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+  // Function to log in an existing user
+    async function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password);
+    }
+
+  // Function to log out the current user
+    function logout() {
+    return auth.signOut();
+    }
+
+  // Listen for user state changes when the component mounts
+    useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+        setCurrentUser(user);
+        setLoading(false);
+    });
+
+    // Unsubscribe when the component unmounts
+    return unsubscribe;
+    }, []);
+
+  // Context value to be provided to consumers
+    const value = {
+    currentUser,
+    signup,
+    login,
+    logout
+    };
+
+    return (
+    <AuthContext.Provider value={value}>
+        {!loading && children}
+    </AuthContext.Provider>
+    );
+}

@@ -1,61 +1,73 @@
-// This page will render a Log in button if your not logged in, upon clicking will lead you to a login page.
-// If you're logged in, it will render a Log out button with your email address.
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
+import Admin from './admin'; // Import the Admin component
+import Home from './home';
+import Profile from './profile';
+// eslint-disable-next-line
+import Login from '../auth/login';
 
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// Removed unused import: import Login from "../../components/auth/login";
-import "../styles/home.scss";
+function App() {
+    const [loggedIn, setLoggedIn] = useState(false); // State to track login status
 
-const Home = (props) => { // TODO: Describe how data is passed from one API to another
-    const { loggedIn, email } = props;
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    // Function to handle successful login
+    // eslint-disable-next-line
+    const handleLogin = () => {
+        setLoggedIn(true);
+    };
 
-    const onButtonClick = () => {
-        if (loggedIn) {
-            // Handle logout logic here (e.g, call API to log the user out)
-            console.log("Log out clicked");
-        } else {
-            // Handle login logic here (e.g., navigate to login page)
-            navigate('/login');
-        }
+    // Function to handle logout
+    const handleLogout = () => {
+        setLoggedIn(false);
     };
 
     return (
-        <div className="mainContainer">
-            <div className="titleContainer">
-                <div>Welcome Back!</div>
-            </div>
-
-            <div>
-                This is the home page.
-                {loggedIn && (
-                    <div>
-                        <Link to="/profile">View Profile</Link>
-                        <br />
-                    </div>
-                )}
-            </div>
-
-            <div className="buttonContainer">
-                {!loggedIn ? (
-                    <div>
-                        {/* Username Input box */}
-                        <input
-                            className="inputButton"
-                            type="button"
-                            onClick={onButtonClick}
-                            value={loggedIn ? "Log out" : "Log in"}
-                        />
-                    </div>
-                ) : (
-                    <div>Your email address is {email}</div>
-                )}
-            </div>
-        </div>
-    );
-};
-
-
-export default Home;
+        <Router>
+            <Routes>
+                {/* Route to Home - Only accessible when logged in */}
+                <Route
+                    path="/"
+                    element={
+                        loggedIn ? (
+                            <div>
+                                <Home />
+                                <Link to="/profile">View Profile</Link>
+                                <Link to="/admin">Admin</Link>
+                                <button onClick={handleLogout}>Logout</button>
+                            </div>
+                        ) : (
+                            <Navigate to="/auth/login" />
+                        )
+                    }
+                />
+                {/* Route to Profile - Only accessible when logged in */}
+                <Route
+                    path="/profile"
+                    element={
+                        loggedIn ? (
+                            <div>
+                                <Profile />
+                                <Link to="/">Back to Home</Link>
+                            </div>
+                        ) : (
+                            <Navigate to="/auth/login" />
+                        )
+                    }
+                />
+                {/* Route to Admin - Only accessible when logged in */}
+                <Route
+                    path="/admin"
+                    element={
+                        loggedIn ? (
+                            <div>
+                                <Admin />
+                                <Link to="/">Back to Home</Link>
+                            </div>
+                        ) : (
+                            <Navigate to="/auth/login" />
+                        )
+                    }
+                />
+                {/* ... Other routes ... */}
+            </Routes>
+        </Router>
+    )

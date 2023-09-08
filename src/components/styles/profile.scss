@@ -7,7 +7,7 @@
     border: 1px solid #f2f7ff;
     border-radius: 5px;
     background-color: #f2f7ff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 
     h2 {
@@ -27,11 +27,11 @@
         &:hover {
             text-decoration: underline;
         }
+    }
 
     /* Header Section */
-
     .header {
-        background-image: url();
+        background-image: url(https://online.sbu.edu/sites/default/files/field/image/cybersecurity_tools_1.jpg);
         background-size: cover;
         background-position: center;
         height: 200px;
@@ -52,7 +52,5 @@
         color: #fff;
         padding: 10px 0;
         border-radius: 0 0 5px 5px;
-    }
-
     }
 }
