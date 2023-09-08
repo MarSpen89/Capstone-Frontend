@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Profile from './pages/profile';
 import Login from '../components/auth/login';
 import Password from '..//..//src/password';
+import Register from './auth/register';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false); // State to track login status
@@ -15,36 +16,25 @@ function App() {
     };
 
     // Function to handle logout
-    // eslint-disable-next-line
     const handleLogout = () => {
         setLoggedIn(false);
+    };
+
+    // Function to handle successful registration
+    const handleRegister = () => {
+        setLoggedIn(true);
     };
 
     return (
         <Router>
             <Routes>
-                {/* Route to Home - Only accessible when logged in */}
-                <Route
-                    path="/"
-                    element={loggedIn ? <Home /> : <Navigate to="/auth/login" />}
-                />
-                {/* Route to Admin - Only accessible when logged in */}
-                <Route
-                    path="/admin"
-                    element={loggedIn ? <Admin /> : <Navigate to="/auth/login" />}
-                />
-                {/* Route to Profile - Only accessible when logged in */}
-                <Route
-                    path="/profile"
-                    element={loggedIn ? <Profile /> : <Navigate to="/auth/login" />}
-                />
-                {/* Route to Login */}
-                <Route
-                    path="/auth/login"
-                    element={<Login onLogin={handleLogin} />}
-                />
-                {/* Route to Password */}
-                <Route path="/src/password" element={<Password />} />
+                <Route path="/src/components/pages/home.js" element={<Home loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="/admin" element={<Admin loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="/profile" element={<Profile loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="/login" element={<Login loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="/register" element={<Register loggedIn={loggedIn} handleRegister={handleRegister} handleLogout={handleLogout} />} />
+                <Route path="/password" element={<Password loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Router>
     );

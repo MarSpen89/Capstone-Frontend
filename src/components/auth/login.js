@@ -26,7 +26,7 @@ const Login = () => {
 
     axios
       .post(
-        'http://127.0.0.1:5000/user',
+        'http://127.0.0.1:5000/verify/login',
         {
           client: {
             email: email,
@@ -73,6 +73,10 @@ const Login = () => {
         />
 
         <button type='submit' className="login-button">Login</button>
+
+        {/* Remove the incorrect code */}
+        
+        <button type='button' className="register-button" onClick={() => navigate('/register')}>Register</button>
       </form>
     </div>
   );

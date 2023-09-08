@@ -35,4 +35,13 @@ $transparent: transparent;
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .register-button {
+    padding: 10px 20px;
+    background-color: $primaryColor;
+    color: yellowgreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } 
 }
