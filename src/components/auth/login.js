@@ -1,8 +1,10 @@
 // I need to incorporate this into my home.js page
 
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import { auth } from './firebase'; // Import your initialized Firebase app
-import { useHistory } from 'react-router-dom'; // Change to useHistory
+import firebase from 'firebase/app'; // for Firebase core
+import 'auth'; // for Firebase authentication, adjust for other services
+
+import {useNavigate } from 'react-router-dom'; // Change to useHistory
 
 // Create a context to hold the user authentication state
 const AuthContext = createContext();
@@ -59,3 +61,4 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
     );
 }
+

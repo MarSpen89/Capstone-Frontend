@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import { auth } from './firebase'; // Import your initialized Firebase app
+import { auth } from 'firebase'; // Import your initialized Firebase app
 import { useHistory } from 'react-router-dom'; // Change to useHistory
 
 // Create a context to hold the user authentication state
