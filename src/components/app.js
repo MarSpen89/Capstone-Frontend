@@ -4,7 +4,7 @@ import Admin from './pages/admin';
 import Home from './pages/home';
 import Profile from './pages/profile';
 import Login from '../components/auth/login';
-import Password from '..//..//src/password';
+import Password from '../../src/password';
 import Register from './auth/register';
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/src/components/pages/home.js" element={<Home loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
+                <Route path="/home" element={<Home loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
                 <Route path="/admin" element={<Admin loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
                 <Route path="/profile" element={<Profile loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
                 <Route path="/login" element={<Login loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />

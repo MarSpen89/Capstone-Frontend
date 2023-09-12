@@ -1,64 +1,86 @@
-// I need to incorporate this into my home.js page
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import '../styles/login.scss';
 
-import React, { useState, useEffect, createContext, useContext } from 'react';
-import firebase from 'firebase/app'; // for Firebase core
-import 'auth'; // for Firebase authentication, adjust for other services
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorText, setErrorText] = useState('');
 
-import {useNavigate } from 'react-router-dom'; // Change to useHistory
+  // Use the useNavigate hook to get the navigation function
+  const navigate = useNavigate();
 
-// Create a context to hold the user authentication state
-const AuthContext = createContext();
-
-// Custom hook to use the AuthContext
-export function useAuth() {
-    return useContext(AuthContext);
-}
-
-// AuthProvider component to wrap the entire application and provide authentication context
-export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-  // eslint-disable-next-line
-  const history = useHistory(); // Change to useHistory
-
-  // Function to sign up a new user
-    async function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
     }
+    setErrorText('');
+  };
 
-  // Function to log in an existing user
-    async function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  // Function to log out the current user
-    function logout() {
-    return auth.signOut();
-    }
+    axios
+      .post(
+        'http://127.0.0.1:5000/verify/login',
+        {
+          client: {
+            email: email,
+            password: password,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.data.status === 'created') {
+          // Use the navigate function to navigate to the home page
+          navigate('/dashboard');
+        } else {
+          setErrorText('Wrong email or password');
+        }
+      })
+      .catch((error) => {
+        setErrorText('An error occurred');
+      });
+  };
 
-  // Listen for user state changes when the component mounts
-    useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-        setCurrentUser(user);
-        setLoading(false);
-    });
+  return (
+    <div className="login-container">
+      <h1>LOGIN TO ACCESS YOUR PROFILE</h1>
 
-    // Unsubscribe when the component unmounts
-    return unsubscribe;
-    }, []);
+      <div className="error-text">{errorText}</div>
 
-  // Context value to be provided to consumers
-    const value = {
-    currentUser,
-    signup,
-    login,
-    logout
-    };
+      <form onSubmit={handleSubmit}>
+        <input
+          className="input-field"
+          type='email'
+          name='email'
+          placeholder='Your email'
+          value={email}
+          onChange={handleChange}
+        />
 
-    return (
-    <AuthContext.Provider value={value}>
-        {!loading && children}
-    </AuthContext.Provider>
-    );
-}
+        <input
+          className="input-field"
+          type='password'
+          name='password'
+          placeholder='Your password'
+          value={password}
+          onChange={handleChange}
+        />
+
+        <button type='submit' className="login-button">Login</button>
+
+        {/* Remove the incorrect code */}
+        
+        <button type='button' className="register-button" onClick={() => navigate('/register')}>Register</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
 
