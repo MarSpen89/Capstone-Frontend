@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/register.scss';
+import LoginImage from '../../assets/18929952_rm373batch3-socialmediapost-04.jpg'
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -30,7 +31,15 @@ const Register = () => {
     };
 
     return (
-        <div className="register-container">
+        <div className="login-container" style={{
+            backgroundImage:`url(${LoginImage})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '50vh',
+            width: '55vh'
+        }}>
+        
+        className="register-container">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">

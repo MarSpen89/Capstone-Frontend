@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../styles/admin.css';  
+import '../styles/admin.css';
+import LoginImage from '../../assets/5935925_3092746.jpg';  
 
 // Import your CSS file for styling once you create it
 
@@ -12,7 +13,13 @@ const Admin = () => {
     };
 
     return (
-        <div className="adminContainer">
+        <div className="login-container" style={{
+            backgroundImage:`url(${LoginImage})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '20vh',
+        }}>
+        className="adminContainer">
             <h2>Admin Dashboard</h2>
             <div className="adminContent">
                 <h3>Statistics</h3>

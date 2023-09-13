@@ -2,8 +2,16 @@
 $primaryColor: #485e81;
 $transparent: transparent;
 
-
-// login.css
+.page-container {
+  background-color: $transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  border: 10px solid #204969;
+  border-radius: 5px;
+}
 
 .login-container {
   background-color: grey;
@@ -14,6 +22,10 @@ $transparent: transparent;
   margin: 20px auto;
   text-align: center;
 
+h1 {
+  color: yellowgreen;
+}
+
   .error-text {
     color: red;
     margin-bottom: 10px;
@@ -21,7 +33,7 @@ $transparent: transparent;
 
   .input-field {
     background-color: $primaryColor;
-    color: yellowgreen;
+    color: rgb(147, 195, 51);
     padding: 10px;
     margin: 10px;
     width: 80%;

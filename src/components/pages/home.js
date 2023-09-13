@@ -20,8 +20,12 @@ function Home() {
     };
 
     return (
-        <>
-        </>
+        <div>
+            <p>HOME PAGE</p>
+        </div>
+        
+        
+        
         // <Router>
         //     <Routes>
         //         {/* Route to Home - Only accessible when logged in */}

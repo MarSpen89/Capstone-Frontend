@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../styles/login.scss';
+import LoginImage from '../../assets/AdobeStock_493493706_Preview.jpeg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -48,7 +49,12 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" style={{
+        backgroundImage:`url(${LoginImage})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '20vh',
+    }}>
       <h1>LOGIN TO ACCESS YOUR PROFILE</h1>
 
       <div className="error-text">{errorText}</div>
