@@ -5,11 +5,12 @@ import LoginImage from '../../assets/18929952_rm373batch3-socialmediapost-04.jpg
 
 const Register = () => {
     const [formData, setFormData] = useState({
+        username: '',
         email: '',
         password: '',
     });
 
-    const { email, password } = formData;
+    const { username, email, password } = formData;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,7 +19,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/register', {
+            const response = await axios.post('http://127.0.0.1:5000/user', {
+                username,
                 email,
                 password,
             });
@@ -35,13 +37,21 @@ const Register = () => {
             backgroundImage:`url(${LoginImage})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            minHeight: '50vh',
-            width: '55vh'
+            minHeight: '70vh',
         }}>
         
-        className="register-container">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="username">username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={handleChange}
+                        required
+                />
+            </div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input

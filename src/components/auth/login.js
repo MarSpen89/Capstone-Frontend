@@ -27,7 +27,7 @@ const Login = () => {
 
     axios
       .post(
-        'http://127.0.0.1:5000/verify/login',
+        'http://127.0.0.1:5000/user/verify',
         {
           client: {
             email: email,
