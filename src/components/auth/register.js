@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/register.scss';
-import LoginImage from '../../assets/18929952_rm373batch3-socialmediapost-04.jpg'
+import LoginImage from '../../assets/5913861_3079485.jpg'
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ const Register = () => {
             backgroundImage:`url(${LoginImage})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            minHeight: '70vh',
+            minHeight: '45vh',
         }}>
         
             <h2>Register</h2>
