@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import axios from 'axios';
 import '../styles/register.scss';
-import LoginImage from '../../assets/5913861_3079485.jpg'
+import LoginImage from '../../assets/5913861_3079485.jpg';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -34,14 +35,16 @@ const Register = () => {
 
     return (
         <div className="login-container" style={{
-            backgroundImage:`url(${LoginImage})`,
+            backgroundImage: `url(${LoginImage})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             minHeight: '45vh',
         }}>
-        
+
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
+                {/* Add a Link to navigate back to the home page */}
+                <Link to="/home">Home</Link>
                 <div className="form-group">
                     <label htmlFor="username">username</label>
                     <input
@@ -50,8 +53,8 @@ const Register = () => {
                         value={username}
                         onChange={handleChange}
                         required
-                />
-            </div>
+                    />
+                </div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input

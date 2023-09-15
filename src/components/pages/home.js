@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
-import Admin from './admin'; // Import the Admin component
-//import Home from '../pages/home.js';
-import Profile from './profile';
-// eslint-disable-next-line
-import Login from '../auth/login';
+import { Link } from 'react-router-dom';
+
+import '../styles/home.scss'; // Import your CSS file
 
 function Home() {
     const [loggedIn, setLoggedIn] = useState(false); // State to track login status
 
     // Function to handle successful login
-    const Home = () => {
-        setLoggedIn(true);
-    };
+    // const handleLogin = () => {
+    //     setLoggedIn(true);
+    // };
 
     // Function to handle logout
     const handleLogout = () => {
@@ -22,9 +19,9 @@ function Home() {
     return (
         <div className="home-container">
             <header className="header">
-            <h1>Welcome to Cyber Guardian</h1>
+                <h1>Welcome to Cyber Guardian</h1>
             </header>
-            <div classname="content">
+            <div className="content">
                 <p className="intro-text">
                     The Cyber Guardian Project is a web application designed with the primary objective of empowering web developers with the latest and most effective security practices. In today's digital landscape, where online threats and vulnerabilities continue to evolve, safeguarding web applications and user data is of paramount importance. This application serves as a trusted and up-to-date resource, enabling developers to fortify their creations against cyber threats and ensure the safety and integrity of their users' information.
                 </p>
@@ -33,68 +30,29 @@ function Home() {
                 </p>
             </div>
             <div className="buttons">
-            {loggedIn ? (
-                <button className="logout-button" onClick={handleLogout}>Logout</button>
-            ) : (
-                <Link to="/login" className="portal-login-button">Portal Login</Link>
-            )}
-            <Link to="/register" className="register-portal-button">Register portal</Link>
-            </div>  
+                {loggedIn ? (
+                    <button className="logout-button" onClick={handleLogout}>
+                        Logout
+                    </button>
+                ) : (
+                    <Link to="/login" className="portal-login-button">
+                        Portal Login
+                    </Link>
+                )}
+                <Link to="/register" className="register-portal-button">
+                    Register portal
+                </Link>
+                
+                {/* Buttons for navigating to admin and profile pages */}
+                <Link to="/admin" className="admin-button">
+                    Admin
+                </Link>
+                <Link to="/profile" className="profile-button">
+                    Profile
+                </Link>
+            </div>
         </div>
-
-        
-        
-        
-        // <Router>
-        //     <Routes>
-        //         {/* Route to Home - Only accessible when logged in */}
-        //         <Route
-        //             path="/"
-        //             element={
-        //                 loggedIn ? (
-        //                     <div>
-        //                         <Home />
-        //                         <Link to="/profile">View Profile</Link>
-        //                         <Link to="/admin">Admin</Link>
-        //                         <button onClick={handleLogout}>Logout</button>
-        //                     </div>
-        //                 ) : (
-        //                     <Navigate to="/auth/login" />
-        //                 )
-        //             }
-        //         />
-        //         {/* Route to Profile - Only accessible when logged in */}
-        //         <Route
-        //             path="/profile"
-        //             element={
-        //                 loggedIn ? (
-        //                     <div>
-        //                         <Profile />
-        //                         <Link to="/">Back to Home</Link>
-        //                     </div>
-        //                 ) : (
-        //                     <Navigate to="/auth/login" />
-        //                 )
-        //             }
-        //         />
-        //         {/* Route to Admin - Only accessible when logged in */}
-        //         <Route
-        //             path="/admin"
-        //             element={
-        //                 loggedIn ? (
-        //                     <div>
-        //                         <Admin />
-        //                         <Link to="/">Back to Home</Link>
-        //                     </div>
-        //                 ) : (
-        //                     <Navigate to="/auth/login" />
-        //                 )
-        //             }
-        //         />
-        //         {/* ... Other routes ... */}
-        //     </Routes>
-        // </Router>
     );
 }
 
-export default Home; // Export the App component
+export default Home;

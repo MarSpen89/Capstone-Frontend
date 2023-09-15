@@ -1,130 +1,42 @@
-/* Styles for the home-container */
+/* Home.css */
+
 .home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #f2f7ff;
-  padding: 20px; /* Add some padding to give content space */
-}
-
-/* Styles for the header */
-.header {
-  font-size: 24px;
-  color: #506f86;
-  margin-bottom: 20px;
-}
-
-/* Styles for the content */
-.content {
   text-align: center;
-  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
 }
 
 .intro-text {
   font-size: 18px;
-  color: #333; /* Change text color to something more readable */
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-/* Styles for the buttons */
 .buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 20px;
 }
 
 .portal-login-button,
-.register-portal-button {
+.register-portal-button,
+.admin-button,
+.profile-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
   text-decoration: none;
-  background-color: #1262e2; /* Use your primary color */
-  color: #f2f7ff;
-  padding: 10px 20px;
-  border: none;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-  margin: 5px; /* Add margin between the buttons */
-
-  &:hover {
-    background-color: #0c4fb8; /* Darker shade on hover */
-  }
 }
 
-.logout-button {
-  background-color: #506f86;
-  color: #f2f7ff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-  margin: 5px; /* Add margin between the buttons */
-
-  &:hover {
-    background-color: #3a536b; /* Darker shade on hover */
-  }
+.portal-login-button:hover,
+.register-portal-button:hover,
+.admin-button:hover,
+.profile-button:hover {
+  background-color: #0056b3;
 }
-
-
-
-
-
-
-
-
-
-// // home.scss
-
-// $primaryColor: #1262e2;
-// $transparent: transparent;
-
-// .mainContainer {
-//   background-color: #f2f7ff;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-
-//   .titleContainer {
-//     font-size: 24px;
-//     color: #506f86;
-//     margin-bottom: 20px;
-//   }
-
-//   .inputContainer {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-
-//     .inputField {
-//       width: 100%;
-//       max-width: 300px;
-//       padding: 10px;
-//       margin: 5px;
-//       border: 1px solid #ccc;
-//       border-radius: 5px;
-//   }
-
-//   .buttonContainer {
-//     margin-top: 20px;
-
-//     .inputButton {
-//       background-color: #506f86;
-//       color: #f2f7ff;
-//       padding: 10px 20px;
-//       border: none;
-//       cursor: pointer;
-//       border-radius: 5px;
-//     }
-//   }
-
-//   .emailContainer {
-//     font-size: 18px;
-//     color: #018790;
-//     margin-top: 20px;
-//   }
-// }
-// };
