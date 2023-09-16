@@ -44,7 +44,7 @@ const Register = () => {
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 {/* Add a Link to navigate back to the home page */}
-                <Link to="/home">Home</Link>
+                <Link to="/home" className="home-link">Home</Link>
                 <div className="form-group">
                     <label htmlFor="username">username</label>
                     <input

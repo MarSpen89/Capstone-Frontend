@@ -31,7 +31,7 @@ function App() {
                 {/* Use the "element" prop with a function to conditionally render based on login status */}
                 <Route
                     path="/"
-                    element={loggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />}
+                    element={loggedIn ? <Navigate to="/login" /> : <Navigate to="/home" />}
                 />
                 <Route path="/home" element={<Home loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />
                 <Route path="/admin" element={<Admin loggedIn={loggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />} />

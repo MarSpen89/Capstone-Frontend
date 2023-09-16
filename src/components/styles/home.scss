@@ -5,8 +5,12 @@
   padding: 20px;
 }
 
+.text-color {
+  color: #ff0000;
+}
+
 .header {
-  background-color: #333;
+  background-color: #497285;
   color: #fff;
   padding: 10px;
 }
@@ -25,7 +29,7 @@
 .register-portal-button,
 .admin-button,
 .profile-button {
-  background-color: #007bff;
+  background-color: #497285;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -38,5 +42,5 @@
 .register-portal-button:hover,
 .admin-button:hover,
 .profile-button:hover {
-  background-color: #0056b3;
+  background-color: #18587a;
 }

@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoginImage from '../../assets/3d-internet-secuirty-badge.jpg';
 
 import '../styles/home.scss'; // Import your CSS file
 
 function Home() {
     const [loggedIn, setLoggedIn] = useState(false); // State to track login status
 
-    // Function to handle successful login
-    // const handleLogin = () => {
-    //     setLoggedIn(true);
-    // };
 
     // Function to handle logout
     const handleLogout = () => {
@@ -17,11 +14,17 @@ function Home() {
     };
 
     return (
-        <div className="home-container">
+        <div className="home-container" style={{
+            backgroundImage:`url(${LoginImage})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '150vh',
+        }}>
+        className="home-container"
             <header className="header">
                 <h1>Welcome to Cyber Guardian</h1>
             </header>
-            <div className="content">
+            <div className="intro-text text-color">
                 <p className="intro-text">
                     The Cyber Guardian Project is a web application designed with the primary objective of empowering web developers with the latest and most effective security practices. In today's digital landscape, where online threats and vulnerabilities continue to evolve, safeguarding web applications and user data is of paramount importance. This application serves as a trusted and up-to-date resource, enabling developers to fortify their creations against cyber threats and ensure the safety and integrity of their users' information.
                 </p>
