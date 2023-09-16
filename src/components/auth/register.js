@@ -20,7 +20,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:5000/user', {
+            const response = await axios.post('https://cyber-guardian-project-be-2cb6d708e01b.herokuapp.com/user', {
                 username,
                 email,
                 password,

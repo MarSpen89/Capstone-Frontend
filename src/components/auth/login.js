@@ -27,7 +27,7 @@ const Login = () => {
 
     axios
       .post(
-        'http://127.0.0.1:5000/user/verify',
+        'https://cyber-guardian-project-be-2cb6d708e01b.herokuapp.com/user/verify',
         {
           client: {
             email: email,
